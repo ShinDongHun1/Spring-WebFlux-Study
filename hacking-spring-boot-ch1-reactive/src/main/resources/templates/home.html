@@ -6,10 +6,58 @@
     <title>Hacking with Spring boot</title>
 </head>
 <body>
-    <h1> Welcome to Hacking with Spring Boot!</h1>
-    <p>
-            으이이이이잉
-    </p>
+<h1> Welcome to Hacking with Spring Boot!</h1>
+<p>
+    으이이이이잉
+</p>
+<h2>Inventory Management</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${items}">
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.price}"></td>
 
+        <td>
+            <form method="post" th:action="@{'/add/' + ${item.id}}">
+                <input type="submit" value="Add to Cart"/>
+            </form>
+        </td>
+        <td>
+            <form method="delete" th:action="@{'/delete/' + ${item.id}}">
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+
+<h2>My Cart</h2>
+<table>
+    <THEAD>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Quantity</th>
+    </tr>
+    </THEAD>
+    <tbody>
+        <tr th:each="cartItem : ${cart.cartItems}">
+
+            <td th:text="${cartItem.item.id}"></td>
+            <td th:text="${cartItem.item.name}"></td>
+            <td th:text="${cartItem.quantity}"></td>
+        </tr>
+
+    </tbody>
+    </table>
 </body>
 </html>

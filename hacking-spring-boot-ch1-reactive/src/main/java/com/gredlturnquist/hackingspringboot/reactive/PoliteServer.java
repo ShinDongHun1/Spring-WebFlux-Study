@@ -14,7 +14,7 @@ public class PoliteServer {
 
 	Flux<Dish> doingMyJob(){
 		return this.kitchenService.getDishes()
-			.doOnNext(dish -> System.out.println("메뉴[%s] 나왔어 가져다드령 ".formatted(dish)))
+			.doOnNext(dish -> System.out.println("메뉴[%s] 나왔어  ".formatted(dish)))
 			.doOnError(error -> System.out.println(" 에러났어 미안 ㅜㅜ  [%s] ".formatted(error.getMessage())))
 			.doOnComplete(() -> System.out.println("열시미 일해줘서 고마웡 ><"))
 			.map(Dish::deliver);
